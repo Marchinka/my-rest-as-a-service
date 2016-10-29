@@ -1,7 +1,7 @@
 var stringValidator = require('./stringValidator');
 var Error = require('./error');
 
-var validateMandatoryString: function(fieldName) {
+var validateMandatoryString = function(fieldName) {
 	if(stringValidator.isEmpty(entity[fieldName])) {
 		var error = new Error(fieldName, "Cannot be empty");
 		return error;

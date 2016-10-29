@@ -4,11 +4,14 @@
   "description": "baas",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha ./test -w ./test/*.* ./test/**/*.*"
   },
   "author": "Marcello Rossi",
   "license": "ISC",
   "dependencies": {
     "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.1.2"
   }
 }

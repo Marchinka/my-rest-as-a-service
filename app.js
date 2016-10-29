@@ -10,6 +10,4 @@ app.get('/', function (req, res) {
 app.use('/api/baas/', apiRouter);
 app.use('/api/collections/', collectionsRouter);
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
-});
+module.exports = app;
