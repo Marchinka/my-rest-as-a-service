@@ -1,0 +1,14 @@
+{
+  "name": "my-rest-as-a-service",
+  "version": "1.0.0",
+  "description": "baas",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Marcello Rossi",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
