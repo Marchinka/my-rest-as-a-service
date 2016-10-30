@@ -2,9 +2,10 @@
   "name": "my-rest-as-a-service",
   "version": "1.0.0",
   "description": "baas",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "test": "mocha ./test -w ./test/*.* ./validation/*.*"
+    "test": "mocha ./test -w ./test/*.* ./validation/*.*",
+    "start": "node index.js"
   },
   "author": "Marcello Rossi",
   "license": "ISC",

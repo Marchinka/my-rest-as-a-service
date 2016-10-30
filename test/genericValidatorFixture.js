@@ -91,21 +91,21 @@ describe('genericValidator', function() {
 
 	describe('with unknown field', function() {
 		describe('validate', function() {
-				it('throws error', function() {
-					// SETUP
-      				var field = { name: "fieldName", type: 'FLYNG SPAGHETTI MONSTER', required: true };
-      				var options = { fields: [field] };
-      				var validator = new Validator(options);
-      				var entity = { fieldName: true };
+			it('throws error', function() {
+				// SETUP
+				var field = { name: "fieldName", type: 'FLYNG SPAGHETTI MONSTER', required: true };
+				var options = { fields: [field] };
+				var validator = new Validator(options);
+				var entity = { fieldName: true };
 
-      				// EXERCISE
-      				var errorThrower = function () { 
-      					validator.validate(entity);
-      				};
+				// EXERCISE
+				var errorThrower = function () { 
+					validator.validate(entity);
+				};
 
-      				// ASSERT
-      				expect(errorThrower).to.throwError();
-				});
+				// ASSERT
+				expect(errorThrower).to.throwError();
+			});
 		});
 	});
 

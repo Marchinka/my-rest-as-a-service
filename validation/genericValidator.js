@@ -94,10 +94,6 @@ module.exports = function(options) {
 			}
 		};
 
-		// addValidation(error, validateMandatoryString, "collectionName");
-		// addValidation(error, validateMandatoryString, "collectionLabel");
-		// addValidation(error, validateMandatoryString, "url");
-
 		return callback ? callback(errors) : errors;
 	}
 };
