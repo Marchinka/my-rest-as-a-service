@@ -4,7 +4,7 @@
   "description": "baas",
   "main": "app.js",
   "scripts": {
-    "test": "mocha ./test -w ./test/*.* ./test/**/*.*"
+    "test": "mocha ./test -w ./test/*.* ./validation/*.*"
   },
   "author": "Marcello Rossi",
   "license": "ISC",
@@ -12,6 +12,7 @@
     "express": "^4.14.0"
   },
   "devDependencies": {
+    "expect.js": "^0.3.1",
     "mocha": "^3.1.2"
   }
 }

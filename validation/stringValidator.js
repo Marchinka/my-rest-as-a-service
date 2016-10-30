@@ -1,4 +1,4 @@
-module.export = {
+module.exports = {
 	isEmpty: function (text) {
 		text = text ? text.trim() : text;
 		if(text) {
@@ -6,5 +6,5 @@ module.export = {
 		} else {
 			return true;
 		}
-	}
-};
+	}	
+}
