@@ -1,5 +1,3 @@
-var stringValidator = require('./stringValidator');
-
 var validateMandatoryField = function(entity, fieldName) {
 	if(!entity[fieldName]) {
 		var error = { field: fieldName, message: "Cannot be empty" };
@@ -65,6 +63,7 @@ module.exports = function(options) {
 			throw new Error("Field without name property");
 		}
 	};
+
 
 	this.fields = options.fields;
 
