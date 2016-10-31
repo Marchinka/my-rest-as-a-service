@@ -27,9 +27,13 @@ var getValidMetadata = function () {
 describe('/api/metadata', function() {
 
 	beforeEach(function(done) {
-    	mongoose.connect(dbConfig.dburl, options, function () {
-    		mongoose.models = {};
-    		mongoose.connection.db.dropDatabase();
+    	mongoose.connect(dbConfig.dburl, options, function (err) {
+    		if (err) {
+    			throw new Error("An instance of mongodb should be launched in order to execute the tests.");
+    		} else {
+	    		mongoose.models = {};
+	    		mongoose.connection.db.dropDatabase();
+    		}
     		done();
     	});
   	});

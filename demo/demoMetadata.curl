@@ -1,0 +1,5 @@
+curl -H "Content-Type: application/json" -X GET https://my-rest-as-a-service.herokuapp.com/api/metadata | prettyjson
+curl -H "Content-Type: application/json" -X GET https://my-rest-as-a-service.herokuapp.com/api/metadata/5817c557053f140003a035a2 | prettyjson
+curl -H "Content-Type: application/json" -X DELETE https://my-rest-as-a-service.herokuapp.com/api/metadata/5817c557053f140003a035a2 | prettyjson
+curl -H "Content-Type: application/json" -X PUT -d '{"name":"FUNZIA","label":"FUNZIA"}' https://my-rest-as-a-service.herokuapp.com/api/metadata/5817c557053f140003a035a2 | prettyjson
+curl -H "Content-Type: application/json" -X POST -d '{"name":"xyz","label":"xyz"}' https://my-rest-as-a-service.herokuapp.com/api/metadata | prettyjson
