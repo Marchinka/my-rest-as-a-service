@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var MetadataRepository = require('./database/metadataRepository');
 
 router.use(function (req, res, next) {
 	console.log('Time: ', Date.now());
@@ -16,8 +17,19 @@ router.get('/:id', function(req, res) {
 });
 
 router.post('/', function(req, res) {
-	res.send('Collezione POST');
+	var metadata = {
+		name: 'test'
+	};
 
+	var metadataRepository = new MetadataRepository({ 
+		dbUrl: 'ds139267.mlab.com:39267/heroku_13pcdmpq',
+		user: 'admin',
+		password: 'maldive'
+	});
+
+	metadataRepository.insert(metadata, function (err) {
+		res.send('Collezione POST ' + err);
+	})
 });
 
 router.delete('/:id', function(req, res) {
