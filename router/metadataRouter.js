@@ -22,7 +22,7 @@ router.post('/', function(req, res) {
 	};
 
 	var metadataRepository = new MetadataRepository({ 
-		dbUrl: 'ds139267.mlab.com:39267/heroku_13pcdmpq',
+		dbUrl: 'mongodb://heroku_13pcdmpq:q5gl95kkja4voprhkrgor20f9i@ds139267.mlab.com:39267/heroku_13pcdmpq',
 		user: 'admin',
 		password: 'maldive'
 	});
