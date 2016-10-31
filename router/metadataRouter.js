@@ -1,46 +1,63 @@
 var express = require('express');
 var router = express.Router();
-var MetadataRepository = require('./database/metadataRepository');
-
-router.use(function (req, res, next) {
-	console.log('Time: ', Date.now());
-	next();
-});
+var metadataRepository = require('./../database/metadataRepository');
 
 router.get('/', function(req, res) {
-	res.send('Collezione GET');
-});
+	var sendResponse = function (err, docs) {
+		if (err) {
+			res.status(404).json({ err: err });
+		} else {
+			res.status(200).json(docs);
+		}
+	};
+	metadataRepository.getAll(sendResponse);});
 
 router.get('/:id', function(req, res) {
 	var id = req.params.id;
-	res.send('Collezione GET su id ' + id);
+	var sendResponse = function (err, doc) {
+		if (err) {
+			res.status(404).json({ err: err });
+		} else {
+			res.status(200).json(doc);
+		}
+	};
+	metadataRepository.getById(id, sendResponse);
 });
 
 router.post('/', function(req, res) {
-	var metadata = {
-		name: 'test'
+	var metadata = req.body;
+	var sendResponse = function (err, doc) {
+		if (err) {
+			res.status(400).json({ err: err });
+		} else {
+			res.status(201).json(doc);
+		}
 	};
-
-	var metadataRepository = new MetadataRepository({ 
-		dbUrl: 'mongodb://heroku_13pcdmpq:q5gl95kkja4voprhkrgor20f9i@ds139267.mlab.com:39267/heroku_13pcdmpq',
-		user: 'admin',
-		password: 'maldive'
-	});
-
-	metadataRepository.insert(metadata, function (err) {
-		res.send('Collezione POST ' + err);
-	})
+	metadataRepository.insert(metadata, sendResponse)
 });
 
 router.delete('/:id', function(req, res) {
 	var id = req.params.id;
-	res.send('Collezione DELETE su id ' + id);
-
+	var sendResponse = function (err, doc) {
+		if (err) {
+			res.status(400).json({ err: err });
+		} else {
+			res.status(202).json({ id: id });
+		}
+	};
+	metadataRepository.deleteById(id, sendResponse);
 });
 
 router.put('/:id', function(req, res) {
 	var id = req.params.id;
-	res.send('Collezione PUT su id ' + id);
-});
+	var metadata = req.body;
+	var sendResponse = function (err, doc) {
+		if (err) {
+			res.status(400).json({ err: err });
+		} else {
+			res.status(202).json(doc);
+		}
+	};
+	metadataRepository.updateById(id, metadata, sendResponse);});
 
 module.exports = router;

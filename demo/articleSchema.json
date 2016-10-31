@@ -1,0 +1,8 @@
+{
+	"name":"articles",
+	"fields": {
+		"title": { "type": "String", "required": "true" },
+		"subTitle": { "type": "String" },
+		"content": { "type": "String", "required": "true" }
+	}
+}
