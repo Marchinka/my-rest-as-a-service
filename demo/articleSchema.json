@@ -1,5 +1,6 @@
 {
 	"name":"articles",
+	"label":"my-articles",
 	"fields": {
 		"title": { "type": "String", "required": "true" },
 		"subTitle": { "type": "String" },
