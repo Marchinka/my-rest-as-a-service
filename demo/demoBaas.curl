@@ -1,0 +1,9 @@
+curl -H "Content-Type: application/json" -X POST -d '@./demo/articleSchema.json' https://my-rest-as-a-service.herokuapp.com/api/metadata | prettyjson
+curl -H "Content-Type: application/json" -X GET https://my-rest-as-a-service.herokuapp.com/api/baas/wrong | prettyjson
+curl -H "Content-Type: application/json" -X GET https://my-rest-as-a-service.herokuapp.com/api/baas/articles | prettyjson
+curl -H "Content-Type: application/json" -X POST -d '{"title":"titoletto"}' https://my-rest-as-a-service.herokuapp.com/api/baas/articles | prettyjson
+curl -H "Content-Type: application/json" -X POST -d '{"title":"titoletto", "subTitle":"yyyy", "content":"title text"}' https://my-rest-as-a-service.herokuapp.com/api/baas/articles | prettyjson
+curl -H "Content-Type: application/json" -X POST -d '{"title":"titoletto11", "subTitle":"yyyy111", "content":"title text 222"}' https://my-rest-as-a-service.herokuapp.com/api/baas/articles/581877416317bd0003de5a0f | prettyjson
+curl -H "Content-Type: application/json" -X GET https://my-rest-as-a-service.herokuapp.com/api/baas/articles/581877416317bd0003de5a0f | prettyjson
+curl -H "Content-Type: application/json" -X PUT -d '{"title":"titoletto11", "subTitle":"yyyy111", "content":"title text 222"}' https://my-rest-as-a-service.herokuapp.com/api/baas/articles/581877416317bd0003de5a0f | prettyjson
+curl -H "Content-Type: application/json" -X DELETE https://my-rest-as-a-service.herokuapp.com/api/baas/articles/581877416317bd0003de5a0f | prettyjson
