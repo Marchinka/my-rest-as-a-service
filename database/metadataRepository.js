@@ -16,6 +16,9 @@ module.exports = {
 	getById: function(id, callback) {
 		Metadata.findById(id, callback);
 	},
+	getByName: function(name, callback) {
+		Metadata.findOne({ 'name': name }, callback);
+	},	
 	deleteById: function(id, callback) {
 		Metadata.findByIdAndRemove(id, callback);
 	},

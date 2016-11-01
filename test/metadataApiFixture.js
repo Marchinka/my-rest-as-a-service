@@ -42,35 +42,7 @@ describe('/api/metadata', function() {
 		mongoose.connection.close(done);
   	});
 
-	describe('DELETE/:id', function() {
-		describe('not valid id', function() {
-			it('returns bad request', function(done) {
-				request(app)
-					.delete('/api/metadata/not_on_db')
-					.expect('Content-Type', /json/)
-					.expect(400, done);
-			});
-		});
-
-		describe('valid id', function() {
-			var id;
-
-			beforeEach(function (done) {
-				var metadata = getValidMetadata();
-				metadataRepository.insert(metadata, function (err, doc) {
-					id = doc._id;
-					done();
-				})				
-			});
-
-			it('returns success', function(done) {
-				request(app)
-					.delete('/api/metadata/' + id)
-					.expect('Content-Type', /json/)
-					.expect(202, done);
-			});
-		}); 		
-	});  	
+ 	
 
 	describe('GET/', function() {
 		it('returns json', function(done) {
@@ -108,7 +80,30 @@ describe('/api/metadata', function() {
 					.expect('Content-Type', /json/)
 					.expect(200, done);
 			});
-		}); 		
+		});
+	});
+
+	describe('POST', function() {
+		describe('valid metadata', function() {
+			var metadata = getValidMetadata();
+			it('returns success', function(done) {
+				request(app)
+					.post('/api/metadata')
+					.send(metadata)
+					.expect('Content-Type', /json/)
+					.expect(201, done);
+			});
+		});
+
+		describe('not valid metadata', function() {
+			it('returns error', function(done) {
+				request(app)
+					.post('/api/metadata')
+					.send({})
+					.expect('Content-Type', /json/)
+					.expect(400, done);
+			});
+		});
 	});
 
 	describe('PUT/:id', function() {
@@ -145,26 +140,34 @@ describe('/api/metadata', function() {
 		}); 		
 	});	
 
-	describe('POST', function() {
-		describe('valid metadata', function() {
-			var metadata = getValidMetadata();
-			it('returns success', function(done) {
-				request(app)
-					.post('/api/metadata')
-					.send(metadata)
-					.expect('Content-Type', /json/)
-					.expect(201, done);
-			});
-		});
 
-		describe('not valid metadata', function() {
-			it('returns error', function(done) {
+	describe('DELETE/:id', function() {
+		describe('not valid id', function() {
+			it('returns bad request', function(done) {
 				request(app)
-					.post('/api/metadata')
-					.send({})
+					.delete('/api/metadata/not_on_db')
 					.expect('Content-Type', /json/)
 					.expect(400, done);
 			});
 		});
-	});
+
+		describe('valid id', function() {
+			var id;
+
+			beforeEach(function (done) {
+				var metadata = getValidMetadata();
+				metadataRepository.insert(metadata, function (err, doc) {
+					id = doc._id;
+					done();
+				});
+			});
+
+			it('returns success', function(done) {
+				request(app)
+					.delete('/api/metadata/' + id)
+					.expect('Content-Type', /json/)
+					.expect(202, done);
+			});
+		}); 		
+	}); 	
 });

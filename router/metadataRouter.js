@@ -10,7 +10,8 @@ router.get('/', function(req, res) {
 			res.status(200).json(docs);
 		}
 	};
-	metadataRepository.getAll(sendResponse);});
+	metadataRepository.getAll(sendResponse);
+});
 
 router.get('/:id', function(req, res) {
 	var id = req.params.id;
@@ -58,6 +59,7 @@ router.put('/:id', function(req, res) {
 			res.status(202).json(doc);
 		}
 	};
-	metadataRepository.updateById(id, metadata, sendResponse);});
+	metadataRepository.updateById(id, metadata, sendResponse);
+});
 
 module.exports = router;
